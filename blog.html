@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous" />
+    <script>
+        (function(){
+            var theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.classList.add(theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Blog - Stella Xiao</title>
+</head>
+<body class="centered">
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">About</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a class="active" href="blog.html">Blog</a></li>
+            <button class="theme-toggle" onclick="toggleTheme()"><i id="theme-icon" class="fas fa-moon fa-lg"></i></button>
+        </ul>
+    </nav>
+    <main class="content-wrapper">
+        <h2>Blog Posts</h2>
+        <ul class="blog-list">
+            <li>
+                <h3>Gröbner Bases Application in Sudoku</h3>
+                <p>A deep dive on algebraic geometry methods applied to sudoku by constraint modelling.</p>
+                <a href="https://hackmd.io/@dJWrUsLbRF-fSS24QYBM1A/SkNlrgdt0" target="_blank">Read more</a>
+            </li>
+           
+        </ul>
+    </main>
+    <script>
+        function setTheme(theme) {
+            document.body.classList.remove('light', 'dark');
+            document.body.classList.add(theme);
+            localStorage.setItem('theme', theme);
+            const icon = document.getElementById('theme-icon');
+            if (icon) icon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        function toggleTheme() {
+            const current = document.body.classList.contains('light') ? 'light' : 'dark';
+            setTheme(current === 'light' ? 'dark' : 'light');
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('theme') || 'dark';
+            setTheme(saved);
+        });
+    </script>
+</body>
+</html>
